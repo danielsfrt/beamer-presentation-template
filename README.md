@@ -1,8 +1,19 @@
+This repository is a fork of Karl-Ludwig Besser's [Metropolis-based beamer
+template](https://github.com/klb2/beamer-presentation-template). Unfortunately, 
+the [metropolis theme](https://github.com/matze/mtheme) is no longer maintained 
+and several issues emerged throughout the years (even to the extend that beamer
+itself had to implement several patches to stop the theme from breaking). The 
+[moloch theme](https://github.com/jolars/moloch), a fork of metropolis, aims to 
+fix most of these problems, while also simplifying the code. As I hope that this theme
+be more robust and more frequently maintained, I transferred Karl's template
+to the moloch theme, trying to make as little changes as possible.
+
 # Clean and Simple Beamer Presentation Template
 
 This repository provides a clean and simple template for presentations made
 with the LaTeX [beamer package](https://ctan.org/pkg/beamer).
-The design is based on the [metropolis theme](https://github.com/matze/mtheme).
+The design is based on the [moloch theme](https://github.com/jolars/moloch),
+a fork of the [metropolis theme](https://github.com/matze/mtheme).
 
 It is highlighted by many guides on good slide design that slides should
 contain no clutter and as few objects as possible.
@@ -29,9 +40,29 @@ with the template and initialize a new Git repository.
 bash mkbeamerprsentation.sh name-of-the-paper-directory
 ```
 
+The file `presentation.tex` is the main file that needs to be compiled. It is
+recommended to use `lualatex`, if you want to use the Fira fonts. These were
+the default in the metropolis theme, however, the moloch theme disabled these font
+settings, to be independent of the compiler. This template replicates the metropolis
+fonts as follows:
+```latex
+\usepackage{fontspec}
+
+\setsansfont[
+  ItalicFont={Fira Sans Light Italic},
+  BoldFont={Fira Sans},
+  BoldItalicFont={Fira Sans Italic}
+]{Fira Sans Light}
+\setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}
+
+\AtBeginEnvironment{tabular}{%
+  \addfontfeature{Numbers={Monospaced}}
+}
+```
+
 ## Requirements
 Make sure that you have a LaTeX installation on your computer, which includes
-the [metropolis theme](https://ctan.org/pkg/beamertheme-metropolis). It should
+the [moloch theme](https://ctan.org/pkg/moloch). It should
 be included in every popular LaTeX distribution like TeX live or MiKTeX.
 
 If you want to use the [Fira fonts](https://github.com/mozilla/Fira), you need
