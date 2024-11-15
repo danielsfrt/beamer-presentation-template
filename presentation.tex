@@ -11,10 +11,20 @@
 \usepackage[babel]{csquotes}
 \usepackage[american]{isodate}
 
-\usepackage[T1]{fontenc}
-\usepackage{FiraMono}
+% replicate default Fira font from metropolis (as recommended by Moloch documentation)
+\usepackage{fontspec}
+\setsansfont[
+  ItalicFont={Fira Sans Light Italic},
+  BoldFont={Fira Sans},
+  BoldItalicFont={Fira Sans Italic}
+]{Fira Sans Light}
+\setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}
 
-\usetheme[progressbar=frametitle]{metropolis}
+\AtBeginEnvironment{tabular}{%
+  \addfontfeature{Numbers={Monospaced}}
+}
+
+\usetheme[progressbar=frametitle]{moloch}
 
 %%% GRAPHICS %%%
 \usepackage{graphicx}
@@ -46,6 +56,7 @@
 
 
 \title{Title of your Presentation}
+\subtitle{Subtitle}
 \author{Author 1\inst{1}, Author 2\inst{1}, and Author 3\inst{2}}
 \institute[]{%
 	\inst{1} Institute for Science, University Name, Country\\
