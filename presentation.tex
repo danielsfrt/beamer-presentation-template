@@ -45,9 +45,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 
-%\usepackage{biblatex}
-%\bibliography{literature.bib}
-
+\usepackage[style=ieee, backend=biber]{biblatex}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\addbibresource{literature.bib}
 
 \input{setup-colors.tex}
 \input{setup-beamer.tex}
@@ -71,4 +71,10 @@
 \maketitle
 
 \input{example-content.tex}
+
+\begin{frame}{References}
+\small
+   \printbibliography[heading=none]
+\end{frame}
+
 \end{document}
